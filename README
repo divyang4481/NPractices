@@ -1,0 +1,4 @@
+NPractices is a collection of extensions for different bases used in .NET projects.
+
+# implemented:
+* NPractices.Mvc : for ASPNET MVC
