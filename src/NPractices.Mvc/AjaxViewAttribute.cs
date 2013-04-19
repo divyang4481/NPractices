@@ -3,6 +3,9 @@ using System.Web.Mvc;
 
 namespace NPractices.Mvc
 {
+    /// <summary>
+    /// return partial view if ajax request on action
+    /// </summary>
     [AttributeUsage(AttributeTargets.Method, Inherited = true, AllowMultiple = false)]
     public class AjaxViewAttribute : ActionFilterAttribute
     {

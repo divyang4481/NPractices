@@ -6,6 +6,9 @@ using System.Web;
 
 namespace NPractices.Mvc
 {
+    /// <summary>
+    /// An implementation of ActionResult for JSON
+    /// </summary>
     public class JsonNetResult : ActionResult
     {
         public Encoding ContentEncoding { get; set; }

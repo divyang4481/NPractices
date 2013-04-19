@@ -4,7 +4,7 @@ using System.Text;
 
 namespace NPractices.Mvc
 {
-    public class CaptureOutputStream : Stream
+    internal class CaptureOutputStream : Stream
     {
         private readonly Stream _base;
         private readonly string _outputPath;

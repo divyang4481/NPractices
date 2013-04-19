@@ -6,6 +6,9 @@ using System.Web.Routing;
 
 namespace NPractices.Mvc
 {
+    /// <summary>
+    /// extensions for DomainRoute
+    /// </summary>
     public static class DomainRouteExtensions
     {
         [SuppressMessage("Microsoft.Design", "CA1054:UriParametersShouldNotBeStrings", MessageId = "2#",

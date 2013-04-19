@@ -4,6 +4,10 @@ using System.Web.Routing;
 
 namespace NPractices.Mvc
 {
+    /// <summary>
+    /// route domain url to area:
+    /// e.g. http://www.domain.com => /{area}/...
+    /// </summary>
     public class DomainRoute : Route
     {
         public DomainRoute(string url, IRouteHandler routeHandler)

@@ -3,6 +3,9 @@ using System.Web.Mvc;
 
 namespace NPractices.Mvc
 {
+    /// <summary>
+    /// only allow ajax request on action
+    /// </summary>
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
     public class AjaxOnlyAttribute : ActionFilterAttribute
     {

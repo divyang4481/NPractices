@@ -6,6 +6,9 @@ using System.Web.Mvc;
 
 namespace NPractices.Mvc
 {
+    /// <summary>
+    /// An implementation of Error handler for action: use another result to handle the error
+    /// </summary>
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, Inherited = true, AllowMultiple = true)]
     public class HandleErrorWithResultAttribute : FilterAttribute, IExceptionFilter
     {

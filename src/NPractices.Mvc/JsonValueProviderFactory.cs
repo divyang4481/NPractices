@@ -8,6 +8,9 @@ using Newtonsoft.Json.Converters;
 
 namespace NPractices.Mvc
 {
+    /// <summary>
+    /// An implementation of ValueProviderFactory to provide JSON values
+    /// </summary>
     public sealed class JsonDotNetValueProviderFactory : ValueProviderFactory
     {
        public override IValueProvider GetValueProvider(ControllerContext controllerContext)
