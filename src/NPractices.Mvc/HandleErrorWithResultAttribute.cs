@@ -55,12 +55,13 @@ namespace NPractices.Mvc
 
             Exception exception = filterContext.Exception;
 
-            // If this is not an HTTP 500 (for example, if somebody throws an HTTP 404 from an action method),
-            // ignore it.
-            if (new HttpException(null, exception).GetHttpCode() != 500)
+            if (!ExceptionType.IsInstanceOfType(exception))
                 return;
 
-            if (!ExceptionType.IsInstanceOfType(exception))
+            // If this is not an HTTP 500 (for example, if somebody throws an HTTP 404 from an action method),
+            // ignore it.
+            // unless expected exception is http exception
+            if (ExceptionType != typeof(HttpException) && new HttpException(null, exception).GetHttpCode() != 500)
                 return;
 
             filterContext.ExceptionHandled = true;
@@ -145,7 +146,15 @@ namespace NPractices.Mvc
 
             if (_resultType == typeof(HttpStatusCodeResult))
             {
-                filterContext.Result = new HttpStatusCodeResult(HttpStatusCode.InternalServerError, filterContext.HttpContext.Server.UrlEncode(message));
+                var httpException = exception as HttpException;
+                if (httpException != null)
+                {
+                    var statusCode = httpException.GetHttpCode();
+                    var statusDescription = filterContext.HttpContext.Server.UrlEncode(httpException.Message);
+                    filterContext.Result = new HttpStatusCodeResult(statusCode, statusDescription);
+                }
+                else
+                    filterContext.Result = new HttpStatusCodeResult(HttpStatusCode.InternalServerError, filterContext.HttpContext.Server.UrlEncode(message));
             }
 
             #endregion
