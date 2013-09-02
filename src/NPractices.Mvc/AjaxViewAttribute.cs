@@ -12,15 +12,16 @@ namespace NPractices.Mvc
         public override void OnActionExecuted(ActionExecutedContext filterContext)
         {
             base.OnActionExecuted(filterContext);
-            if (!(filterContext.Result is ViewResult))
+            var res = filterContext.Result as ViewResult;
+            if (res == null)
                 return;
 
             if (filterContext.RequestContext.HttpContext.Request.IsAjaxRequest())
                 filterContext.Result = new PartialViewResult
                                            {
-                                               ViewName = null,
-                                               ViewData = filterContext.Controller.ViewData,
-                                               TempData = filterContext.Controller.TempData
+                                               ViewName = res.ViewName,
+                                               ViewData = res.ViewData,
+                                               TempData = res.TempData
                                            };
         }
     }
